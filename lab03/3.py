@@ -1,7 +1,7 @@
 hours = int(input('Enter number of hours: '))
 minutes = int(input('Enter number of minutes: '))
 
-if hours < 0 or minutes < 0 or minutes > 60:
+if hours < 0 or minutes < 0 or minutes >= 60:
     print('Input Error!')
 else:
     total = 0
