@@ -4,15 +4,16 @@ income = float(input('Enter your net income: '))
 if age < 15 or age > 60:
     print('Invalid age.')
 else:
+    total = 0
+
     if income > 79_999 or income < 1:
         print('Invalid income.')
     else:
-        total = income
-        
         if income >= 1 and income <= 30_000:
-            total = total * (20/100)
+            total = income * (20/100)
         else:
-            total = (30_000 - total) * (8/100)
+            extra = income - 30_000
+            total = ((30_000 - extra) * (20/100)) + (extra * 8/100)
         
-    print(f'Your negative income tax is {total:.2f} Baht.')
+        print(f'Your negative income tax is {total:.2f} Baht.')
         
