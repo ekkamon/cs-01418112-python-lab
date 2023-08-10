@@ -5,16 +5,22 @@ while frames <= 10:
     count = 1
     
     print(f'Frame # {frames}')
+    firstPinsDown = int(input('  Number of pins down: '))
     
-    pinsDown = int(input('Number of pins down: '))
-    
-    if pinsDown == 10:
+    if firstPinsDown == 10:
         score += 10
         pass
     else:
-        pinsDown = int(input(f'Number of pins down (0-{10-pinsDown}): '))
+        leftPins = 10 - firstPinsDown
         
-        
+        print(f'Frame # {frames}')
+        secondPinsDown = int(input(f'  Number of pins down (0-{leftPins}): '))
+
+        if secondPinsDown == leftPins:
+            score += 10
+        else:
+            score += firstPinsDown + secondPinsDown
     
     frames += 1
-    
+
+print(f'Total score is {score}')
