@@ -1,63 +1,73 @@
 target = int(input('Enter a target (4-digit integer): '))
 guess = int(input('Enter your guess (4-digit integer): '))
 
-save_target = target
-
-pos = 0
+target_length = target
+guess_length = guess
+position = 0
 digits = 0
 
 if target == guess:
     print('Congratulations, you just mastered my mind!!')
 else:
-    while target > 0:
-        target_value = target % 10
-        guess_value = guess % 10
-        
-        if target == 0 or guess == 0:
-            break
-        
-        target //= 10
-        guess //= 10
-        
-        if target_value == guess_value:
-            pos += 1
+    while target_length > 0:
+        target_value = target_length % 10
+        guess_value = guess_length % 10
+
+        if guess_value == target_value:
+            position += 1
         else:
-            new_target = save_target
-            
-            while new_target > 0:
-                value = new_target % 10
-                
-                if new_target == 0:
-                    break
-                
-                if guess_value == value:
+            num = guess
+            while num > 0:
+                num_value = num % 10
+
+                if num_value == target_value:
                     digits += 1
-                
-                new_target //= 10
-        
-    pos_str = ''
-    digit_str = ''
+
+                num //= 10
+            
+
+        target_length //= 10
+        guess_length //= 10
+
+    position_number = ''
+    digits_number = ''
     
-    if pos == 0:
-        pos_str = 'No'
-    elif pos == 1:
-        pos_str = 'One'
-    elif pos == 2:
-        pos_str = 'Two'
-    elif pos == 3:
-        pos_str = 'Three'
+    if position == 0:
+        position_number = 'No'
+    elif position == 1:
+        position_number = 'One'
+    elif position == 2:
+        position_number = 'Two'
+    elif position == 3:
+        position_number = 'Three'
     else:
-        pos_str == 'Four'
+        position_number == 'Four'
         
     if digits == 0:
-        digit_str = 'no'
+        digits_number = 'no'
     elif digits == 1:
-        digit_str = 'one'
+        digits_number = 'one'
     elif digits == 2:
-        digit_str = 'two'
+        digits_number = 'two'
     elif digits == 3:
-        digit_str = 'three'
+        digits_number = 'three'
     else:
-        digit_str == 'four'
+        digits_number == 'four'
             
-    print(f'{pos_str} {"positions" if pos > 1 or pos == 0 else "position"} correct, {digit_str} {"digits" if digits > 1 or digits == 0 else "digit"} correct')
+    print(f'{position_number}', end=' ')
+    
+    if position == 0 or position > 1:
+        print('positions', end = ' ')
+    else:
+        print('position', end = ' ')
+
+
+    print('correct,', end= ' ')
+    print(f'{digits_number}', end=' ')
+    
+    if digits == 0 or digits > 1:
+        print('digits', end = ' ')
+    else:
+        print('digit', end = ' ')
+    
+    print('correct')
