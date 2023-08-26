@@ -1,26 +1,29 @@
+import math
+
 first = int(input("Enter the first number: "))
 second = int(input("Enter the second number: "))
 
-output_first = first
-output_second = second
+first_value = first
+second_value = second
 
-gcd = (2**31) - 1
+gcd = math.inf
 
 while True:
-  if second == 0:
+  if first == 0 or second == 0:
     break
 
   divide = first % second
+
   first = second
   second = divide
 
-  if divide < gcd and divide != 0:
-    gcd = divide
-    
-if gcd == (2**31) -1:
-  gcd = 1
+  if first != 0 and first < gcd:
+    gcd = first
 
-lcm = int((output_first * output_second) / gcd)
+  if second != 0 and second < gcd:
+    gcd = second
 
-print(f'  >> gcd({output_first}, {output_second}) ={gcd:>7d}')
-print(f'  >> lcm({output_first}, {output_second}) ={lcm:>7d}')
+lcm = int(abs(first_value * second_value) / gcd)
+
+print(f'  >> gcd({first_value}, {second_value}) ={gcd:>7d}')
+print(f'  >> lcm({first_value}, {second_value}) ={lcm:>7d}')
