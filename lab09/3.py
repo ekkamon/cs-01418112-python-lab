@@ -1,17 +1,13 @@
 def nb_year(p0, percent, aug, p):
-    day = 1
-    growth = p0
+    day = 0
+    growth_rate = int(p0)
     total = 0
-    
-    while True:
-        total = (growth + (growth * (percent / 100)) + aug)
-        
-        if total >= p:
-            break
-        
-        growth = total
+
+    while total < p:
+        total = int(growth_rate + (growth_rate * (percent / 100) + aug))
+        growth_rate = total
         day += 1
-        
+
     return day
 
 
