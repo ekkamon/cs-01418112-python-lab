@@ -1,17 +1,28 @@
 scores = []
 
-def find_mode(target, l):
-    count = 0
+def get_max_mode_value():
+    _max = -1
     
-    for val in l:
-        if count > 1:
-            break
+    for val in scores:
+        count = scores.count(val)
+        if count > _max:
+            _max = count
+            
+    return _max
+            
+def find_mode():
+    modes = []
+    mode_max_value = get_max_mode_value()
+    
+    for val in scores:
+        if val in modes:
+            continue
         
-        if target == val:
-            count += 1
+        if val not in modes and scores.count(val) == mode_max_value:
+            modes.append(val)
+            
+    return modes
         
-    return True if count > 1 else False
-
 while len(scores) < 20:
     score = int(input('Enter score: '))
     
@@ -26,12 +37,7 @@ print('Original list:')
 print(scores)
 print('Mode of scores:')
 
-cache = []  
+modes = find_mode()
+modes.sort()
 
-for target in scores:
-    if target in cache:
-        continue
-    
-    if find_mode(target, scores) == True:
-        print(target)
-        cache.append(target)
+for val in modes: print(val)
