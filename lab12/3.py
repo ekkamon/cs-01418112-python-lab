@@ -1,5 +1,11 @@
 data = []
 
+def get_data_between_equal(text):
+    idx = text.find('=')
+    start, end = text[:idx].strip(), text[idx+1:].strip()
+
+    return start, end
+
 def get_equal_idx():
     _max = 0
     
@@ -10,30 +16,22 @@ def get_equal_idx():
             _max = idx_equal
     
     return _max
-
-def set_space_between_equal(text):
-    result = ''
-    equal_idx = text.find('=')
     
-    for idx in range(len(text)):
-        val = text[idx]
-        
-        result += val
-        
-        if idx == equal_idx - 1 and val != ' ':
-            result += ' '
-            
-    return result
+def set_space_format(text):
+    start, end = get_data_between_equal(text)
+    space_size = (get_equal_idx()) - (len(start)) -1
+
+    return f'{" " * space_size}{start} = {end}'
 
 while True:
     text = str(input())
     
     if text == '-1':
         break
-    
-    data.append(text)
 
-equal_idx = get_equal_idx()
+    start, end = get_data_between_equal(text)
+    
+    data.append(f'{start} = {end}')
 
 for val in data:
-    val = set_space_between_equal(val)    
+    print(set_space_format(val))
