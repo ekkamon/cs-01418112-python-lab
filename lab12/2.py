@@ -23,7 +23,7 @@ def clean_space(data):
     arr = []
     
     for val in data:
-        if len(val) > 0 and val[0] == ' ':
+        while len(val) > 0 and val[0] == ' ':
             val = val[1:]
             
         while len(val) > 0 and val[-1] == ' ':
