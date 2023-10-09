@@ -10,6 +10,6 @@ def namelist(names):
 
   return f'{", ".join(start)} & {end}'
 
-print( namelist(['Bart', 'Viola', 'Peter', 'Nostel']) )
-print( namelist(['Bart', 'Viola']) )
-print( namelist(['Peter']) )
+print(namelist(['Bart', 'Viola', 'Peter', 'Nostel']))
+print(namelist(['Bart', 'Viola']))
+print(namelist(['Peter']))
